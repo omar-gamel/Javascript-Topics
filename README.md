@@ -1,6 +1,6 @@
-# 1- What is js hosting ?
+# What is js hosting ?
 
-Hoisting is a behavior in JavaScript where variable and function declarations are moved to the top of their containing scope before code execution. Regardless of where functions and variables are declared, they are moved to the top of their scope by the JavaScript interpreter. This means that you can use variables and functions before you declare them in your code. However, the hoisting behavior works differently for variables declared with <b>var</b>, <b>let</b>, or <b>const</b> and for function declarations and expressions.
+<b>Hoisting is a behavior in JavaScript where variable and function declarations are moved to the top of their containing scope before code execution.</b> Regardless of where functions and variables are declared, they are moved to the top of their scope by the JavaScript interpreter. This means that you can use variables and functions before you declare them in your code. However, the hoisting behavior works differently for variables declared with <b>var</b>, <b>let</b>, or <b>const</b> and for function declarations and expressions.
 
 <h3>Variables Hoisting:</h3>
 
@@ -39,3 +39,26 @@ var hello = function() {
 };
 ```
 In this case, <b>hello</b> is hoisted as a variable (with <b>var</b>), but since its assignment to a function happens at runtime, trying to invoke <b>hello</b> before the assignment results in a <b>TypeError.</b>
+
+# What is js Closures ?
+
+<b>closures are functions that have access to the parent scope</b>, even after the parent function has closed. This is a powerful feature of JavaScript that allows for encapsulation and the creation of private variables. Here's a deeper dive into closures with an example:
+
+<h3>Understanding Closures:</h3>
+
+When you define a function within another function, the inner function has access to the variables of the outer function even after the outer function has finished executing. This behavior is what defines a closure.
+
+``` javascript
+function createGreeting(greetingPrefix) {
+  return function(name) {
+    console.log(greetingPrefix + ' ' + name);
+  };
+}
+
+const sayHello = createGreeting('Hello');
+const sayHi = createGreeting('Hi');
+
+sayHello('John'); // Outputs: "Hello John"
+sayHi('Jane'); // Outputs: "Hi Jane"
+```
+
