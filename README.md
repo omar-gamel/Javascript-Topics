@@ -188,4 +188,117 @@ exampleFunction("first", "second", "third") // SyntaxError: Duplicate parameter 
 
 <h3>4. Function Hoisting</h3>
 
+<b>Hosting in regular functions:</b>
 
+Regular functions are hoisted to the top. And you can access and call them even before they are declared.
+``` javascript
+regularFunction() 
+
+function regularFunction() {
+  console.log("This is a regular function.")
+}
+```
+<b>Hosting in regular functions:</b>
+
+Arrow functions, on the other hand, cannot be accessed before they are initialised.
+``` javascript
+arrowFunction() // Uncaught ReferenceError: Cannot access 'arrowFunction' before initialization
+
+const arrowFunction = () => {
+  console.log("This is an arrow function.")
+}
+```
+
+<h3>5. How to Handle this Binding in Functions</h3>
+
+- <b>Regular functions:</b> have their own <b>this</b> context. And this is determined dynamically depending on how you call or execute the function.
+
+- <b>Arrow functions:</b> on the other hand, do not have their own this context. Instead, they capture the <b>this</b> value from the surrounding lexical context in which the arrow function was created.
+
+<b>1. Setting the this value during a simple function call</b>
+- <b>regular functions:</b> a simple function call sets the <b>this</b> value to the <b>window</b> object (or to <b>undefined</b> if you're using the "strict mode"):
+
+``` javascript
+function myRegularFunction() {
+  console.log(this)
+}
+    
+myRegularFunction() // Window
+```
+
+``` javascript
+"use strict"
+
+function myFunction() {
+  console.log(this)
+}
+    
+myFunction() // udefined
+```
+- <b>arrow functions:</b> a simple function call sets the <b>this</b> value to the surrounding context whether you're using strict mode or not. In the example below, the surrounding context is the global window object.
+``` javascript
+const myArrowFunction = () => {
+  console.log(this);
+};
+
+myArrowFunction() // Window
+```
+
+<b>2. When invoking or calling a method on an object</b>
+
+When you invoke a method whose value is a regular function, the <b>this</b> value is set to the object on which the method is called. But when the value of the method is an arrow function, the <b>this</b> value is set to the global window object.
+``` javascript
+const myObject = {
+  regularExample: function() {
+    console.log("REGULAR: ", this)
+  },
+    
+  arrowExample: () => {
+    console.log("ARROW: ", this)
+  }
+}
+    
+myObject.regularExample() // {regularExample: f, arrowExample: f}
+myObject.arrowExample() // Window
+```
+<h3>6. How to Use Functions as Constructors</h3>
+
+- <b>regular functions:</b> you can create a <b>new</b> instance using the new keyword. And this sets the <b>this</b> value to the new instance you've created.
+
+- <b>arrow functions:</b> you cannot use them as constructors. This is because the value of <b>this</b> in arrow functions is lexically scoped – that is, determined by the surrounding execution context. This behaviour does not make them suitable to be used as constructors.
+
+Here's an example:
+
+``` javascript
+function RegularFuncBird(name, color) {
+  this.name = name
+  this.species = color
+  console.log(this)
+}
+
+const ArrowFuncBird = (name, color) => {
+  this.name = name
+  this.color = color
+  console.log(this)
+}
+
+new RegularFuncBird("Parrot", "blue")  // {name: 'Parrot', species: 'blue'}
+new ArrowFuncBird("Parrot", "blue") // TypeError: ArrowFuncBird is not constructor
+```
+
+<h3>7. So Which One Should You Use?</h3>
+
+There is no straightforward answer to this. Whether you use a regular function or arrow function depends on the specific use case.
+
+It's recommended to use regular function in any of the following cases:
+
+- when you need to use a constructor with the <b>new</b> keyword
+- when you need the <b>this</b> binding to be dynamically scoped
+- when you want to use the arguments object
+  
+And you can use <b>arrow</b> functions in any of the following cases:
+
+- when you want a more concise syntax for the function
+- when you need to maintain the lexical scope of <b>this</b>
+- for non-method functions (in most cases)
+   
