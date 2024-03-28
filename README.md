@@ -151,8 +151,41 @@ const logNumbers = (...args) => {
 logNumbers(8, 24) // Output: (2) [8, 24]
 ```
 
-<h3>3. Duplicate Named Parameters<h3>
+<h3>3. Duplicate Named Parameters</h3>
 
+<b>Duplicate named parameters in regular functions:</b>
 
+When a regular function has duplicate names in the parameters, the last parameter with the duplicate name will take precedence.
+``` javascript
+function exampleFunction(a, b, a) {
+  console.log(a, b)
+}
+
+exampleFunction("first", "second", "third") // third second
+```
+
+But in "strict mode", using a duplicate named parameter will result in a syntax error.
+``` javascript
+"use strict"
+
+function exampleFunction(a, b, a) {
+  console.log(a, b)
+}
+
+exampleFunction("first", "second", "third") // SyntaxError: Duplicate parameter not allowed in this context
+```
+
+<b>Duplicate named parameters in arrow functions:</b>
+
+Arrow functions don't allow for the same parameter name to be used more than once in the parameter list. Doing so will result in a syntax error.
+``` javascript
+const exampleFunction = (a, b, a) => {
+  console.log(a, b)
+}
+
+exampleFunction("first", "second", "third") // SyntaxError: Duplicate parameter not allowed in this context
+```
+
+<h3>4. Function Hoisting</h3>
 
 
