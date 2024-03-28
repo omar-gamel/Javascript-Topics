@@ -62,3 +62,31 @@ sayHello('John'); // Outputs: "Hello John"
 sayHi('Jane'); // Outputs: "Hi Jane"
 ```
 
+# Pure function vs Impure functions
+
+<h3>Pure Function</h3> 
+
+<b>pure function is a function that always returns the same output for the same input and does not cause any side effects.</b> In other words, it only depends on its input parameters and does not modify any external state or global variables. Pure functions are deterministic, meaning that they will always produce the same output given the same input, which makes them easy to test, maintain, and reason about.
+
+Here's an example of a pure function:
+``` javascript
+function add(a, b) {
+ return a + b;
+}
+```
+This function takes two input parameters and always returns the same output for the same input, without modifying any external state or variables. It does not cause any side effects.
+
+<h3>Impure Function</h3> 
+
+<b>impure function is a function that can cause side effects and modify external state or global variables.</b> This makes it harder to predict and reason about, and it can lead to bugs and unexpected behavior. Examples of impure functions include functions that modify the DOM, interact with external APIs or databases, and generate random numbers.
+
+Here's an example of an impure function:
+``` javascript
+let counter = 0
+
+function increment() {
+ counter++;
+ console.log(counter);
+};
+```
+This function modifies the external counter variable and logs the updated value to the console. This makes it impure because it causes a side effect and modifies the external state.
