@@ -69,11 +69,13 @@ sayHi('Jane'); // Outputs: "Hi Jane"
 <b>pure function is a function that always returns the same output for the same input and does not cause any side effects.</b> In other words, it only depends on its input parameters and does not modify any external state or global variables. Pure functions are deterministic, meaning that they will always produce the same output given the same input, which makes them easy to test, maintain, and reason about.
 
 Here's an example of a pure function:
+
 ``` javascript
 function add(a, b) {
  return a + b;
 }
 ```
+
 This function takes two input parameters and always returns the same output for the same input, without modifying any external state or variables. It does not cause any side effects.
 
 <h3>Impure Function</h3> 
@@ -81,6 +83,7 @@ This function takes two input parameters and always returns the same output for 
 <b>impure function is a function that can cause side effects and modify external state or global variables.</b> This makes it harder to predict and reason about, and it can lead to bugs and unexpected behavior. Examples of impure functions include functions that modify the DOM, interact with external APIs or databases, and generate random numbers.
 
 Here's an example of an impure function:
+
 ``` javascript
 let counter = 0
 
@@ -89,4 +92,67 @@ function increment() {
  console.log(counter);
 };
 ```
+
 This function modifies the external counter variable and logs the updated value to the console. This makes it impure because it causes a side effect and modifies the external state.
+
+# Arrow Functions vs Regular Functions
+
+<h3>1. Regular Function Syntax vs Arrow Function Syntax</h3>
+
+<b>Regular function syntax:</b>
+
+``` javascript
+function sayHello(name) {
+  return 'Hello ' + name
+}
+```
+
+<b>Arrow function syntax:</b>
+
+``` javascript
+const sayHello = (name) => {
+  return 'Hello ' + name
+}
+```
+
+<h3>2. How to Access the Arguments Passed to Functions</h3>
+
+<b>How to access arguments with regular functions:</b>
+
+You can access all the arguments passed to a regular function using the <b>arguments</b> object. The <b>arguments</b> object is an array-like object that holds all the arguments passed to the function.
+
+``` javascript
+function logNumbers(num1, num2) {
+  console.log(arguments)
+}
+
+logNumbers(8, 24)  // Output: Arguments(2) i { 0:8, 1:24 }
+```
+
+<b>How to access arguments with arrow functions:</b>
+
+The <b>arguments</b> object is not available in arrow functions. If you try to access it in arrow functions, JavaScript will throw a reference error.
+
+``` javascript
+const logNumbers = (num1, num2) => {
+  console.log(arguments)
+}
+
+logNumbers(8, 24) // Uncaught ReferenceError: arguments is not defined
+```
+
+To access the arguments passed to an arrow function, you can use the rest parameter syntax (__...__).
+
+``` javascript
+const logNumbers = (...args) => {
+  console.log(args)
+}
+
+logNumbers(8, 24) // Output: (2) [8, 24]
+```
+
+<h3>3. Duplicate Named Parameters<h3>
+
+
+
+
