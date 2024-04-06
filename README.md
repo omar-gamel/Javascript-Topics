@@ -301,4 +301,27 @@ And you can use <b>arrow</b> functions in any of the following cases:
 - when you want a more concise syntax for the function
 - when you need to maintain the lexical scope of <b>this</b>
 - for non-method functions (in most cases)
-   
+
+# Callbacks vs. Promises vs. Async/Await: Detailed Comparison
+
+<b>Callback</b>, <b>Promise</b>, and <b>async/await</b> are all mechanisms used in JavaScript for handling asynchronous operations. Let's compare them based on various aspects:
+
+1. <b>Readability:</b>
+   - <b>Callbacks:</b> Callbacks can lead to "callback hell" where multiple nested callbacks make code hard to read and maintain.
+   - <b>Promise:</b> Promises provide a cleaner alternative to callbacks with chaining <b>.then()</b> calls, improving readability to some extent.
+   - <b>Async/await:</b> Async/await offers the most readable syntax by allowing asynchronous code to be written in a synchronous manner, making it easier to understand.
+
+2. <b>Error Handling:</b>
+   - <b>Callbacks:</b> Error handling in callbacks can be cumbersome and prone to errors, especially with nested callbacks.
+   - <b>Promise:</b> Promises have built-in error handling with the <b>.catch()</b> method, allowing for more structured error handling.
+   - <b>Async/await:</b> Error handling with async/await is similar to synchronous code using try/catch blocks, making it intuitive and easy to handle errors.
+  
+3. <b>Chaining:</b>
+   - <b>Callbacks:</b> Chaining callbacks can lead to deeply nested code, which is difficult to manage.
+   - <b>Promise:</b> Promises support chaining <b>.then()</b> calls, allowing for sequential execution of asynchronous operations in a more readable way.
+   - <b>Async/await:</b> Async/await allows sequential code execution without nesting, making it easier to reason about and maintain.
+  
+4. <b>Error Propagation:</b>
+   - <b>Callbacks:</b> Error propagation in callbacks can be challenging, often requiring manual handling and passing errors through each callback.
+   - <b>Promise:</b> Promises propagate errors automatically down the chain, simplifying error handling.
+   - <b>Async/await:</b> Errors in async/await functions propagate automatically, making error handling straightforward.
