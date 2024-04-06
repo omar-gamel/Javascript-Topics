@@ -330,6 +330,10 @@ And you can use <b>arrow</b> functions in any of the following cases:
 
  <b>In JavaScript, scope refers to the current context of your code. This context determines where you can access certain variables and functions. In other words, where you decide to define a variable or function in JavaScript impacts where you have access to it later on.</b> So, if you define a variable inside a function, you will only be able to access it inside that function.
 
+<p align="center">
+  <img src="https://github.com/omar-gamel/javascript-topics/blob/main/scope.png" alt="Type of Js Scopes" width="500" height="400">
+</p>
+
  <h3>Global Scope</h3>
 Global scope means that a variable or function is available anywhere in your code. This is the default scope for variables and functions in JavaScript.Let's take a look at an example:
  
