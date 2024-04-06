@@ -325,3 +325,48 @@ And you can use <b>arrow</b> functions in any of the following cases:
    - <b>Callbacks:</b> Error propagation in callbacks can be challenging, often requiring manual handling and passing errors through each callback.
    - <b>Promise:</b> Promises propagate errors automatically down the chain, simplifying error handling.
    - <b>Async/await:</b> Errors in async/await functions propagate automatically, making error handling straightforward.
+
+# What is JavaScript scope?
+
+ <b>In JavaScript, scope refers to the current context of your code. This context determines where you can access certain variables and functions. In other words, where you decide to define a variable or function in JavaScript impacts where you have access to it later on.</b> So, if you define a variable inside a function, you will only be able to access it inside that function.
+
+ <h3>Global Scope</h3>
+Global scope means that a variable or function is available anywhere in your code. This is the default scope for variables and functions in JavaScript.Let's take a look at an example:
+ 
+ ``` javascript
+  var pet = 'dog';
+  function printPet() {
+      console.log(pet); // prints 'dog' to the console
+  }
+ ```
+
+ <h3>Function Scope</h3>
+ Function scope is similar to a local scope in that variables and functions defined inside a function are only available inside that function. However, there is one key difference: variables and functions defined inside a function are not available in the global scope.Let's take a look at an example:
+
+``` javascript
+function printPet() {
+    var pet = 'cat';
+    console.log(pet); // prints 'cat' to the console
+} 
+```
+
+ <h3>Block Scope</h3>
+ Block scope allows us to create variables and functions only available inside a code block. A code block is any time you use curly braces, for example:
+
+``` javascript
+if (true) {
+    // this is a code block 
+} else {
+    // this is also a code block
+} 
+```
+
+ <h3>Lexical Scope</h3>
+ Lexical scope can be a bit more complicated than the other types of scope. It is sometimes also called static scope or compile-time scope.Lexical scope means that the scope of a variable is determined by its position in the code. In other words, variables are available in the same scope as their parent variables.For example:
+
+``` javascript
+var pet = 'cat';
+function printPet() {
+    console.log(pet); // prints 'cat' to the console
+}
+```
