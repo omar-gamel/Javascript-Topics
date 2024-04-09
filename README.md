@@ -302,7 +302,7 @@ And you can use <b>arrow</b> functions in any of the following cases:
 - when you need to maintain the lexical scope of <b>this</b>
 - for non-method functions (in most cases)
 
-# Callbacks vs. Promises vs. Async/Await: Detailed Comparison
+# Callbacks vs. Promises vs. Async/Await
 
 <b>Callback</b>, <b>Promise</b>, and <b>async/await</b> are all mechanisms used in JavaScript for handling asynchronous operations. Let's compare them based on various aspects:
 
