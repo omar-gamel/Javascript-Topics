@@ -374,3 +374,56 @@ function printPet() {
     console.log(pet); // prints 'cat' to the console
 }
 ```
+
+# Promise.all() vs Promise.race()
+
+<b>Promise.all()</b> and <b>Promise.race()</b> are both methods available in JavaScript for handling multiple promises, but they serve different purposes:
+
+1. <h3>Promise.all():</h3>
+
+  - Takes an iterable of promises (usually an array) as input.
+  - Returns a single Promise that resolves when all of the input promises have resolved, or rejects if any of the input promises reject.
+  - Useful when you have multiple asynchronous tasks that can be executed independently and you want to wait for all of them to complete before proceeding.
+
+Example:
+
+``` javascript
+const promise1 = Promise.resolve(1);
+const promise2 = Promise.resolve(2);
+
+Promise.all([promise1, promise2])
+  .then(values => {
+    console.log(values); // Output: [1, 2]
+  })
+  .catch(error => {
+    console.error(error);
+  });
+```
+
+2. <h3>Promise.race():</h3>
+
+  - Takes an iterable of promises (usually an array) as input.
+  - Returns a Promise that resolves or rejects as soon as one of the input promises resolves or rejects, with the value or reason from that promise.
+  - Useful when you have multiple asynchronous tasks but are interested in the result of the first one to complete.
+
+Example:
+
+``` javascript
+const promise1 = new Promise((resolve, reject) => {
+  setTimeout(resolve, 100, 'one');
+});
+
+const promise2 = new Promise((resolve, reject) => {
+  setTimeout(resolve, 200, 'two');
+});
+
+Promise.race([promise1, promise2])
+  .then(value => {
+    console.log(value); // Output: 'one' (because promise1 resolves first)
+  })
+  .catch(error => {
+    console.error(error);
+  });
+```
+
+So, <b>Promise.all()</b> waits for all promises to settle, while <b>Promise.race()</b> waits for the first promise to settle, whether it resolves or rejects.
